@@ -1,0 +1,2 @@
+- Clicking on the "Details" button of any movie should navigate to the details of that movie.
+- Then, clicking on the "back" button of your browser controls should display the list of all movies.
