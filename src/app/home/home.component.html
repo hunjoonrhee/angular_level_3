@@ -8,6 +8,9 @@
       <input #yearFilter type="number" name="releaseDate" (input)="filter(titleFilter.value, yearFilter.value)" />
     </fieldset>
   </form>
+  <div>
+    {{(movies$ | async) | calculateNumberMovies}}
+  </div>
   @for(movie of movies$ | async; track movie.id) {
   <div class="movie-item">
     <app-movie-item [movie]="movie" appHighlight [isFavorite]="favoritesService.isFavorite(movie)()"
@@ -19,8 +22,4 @@
   </div>
 
   }
-
-
-
-
 </div>

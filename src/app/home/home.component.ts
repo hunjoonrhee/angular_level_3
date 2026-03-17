@@ -7,10 +7,17 @@ import { FavoritesService } from '../services/favorites.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CalculateNumberMoviesPipe } from '../pipes/calculate-number-movies.pipe';
 
 @Component({
   selector: 'app-home',
-  imports: [HighlightDirective, MovieItemComponent, AsyncPipe, RouterLink],
+  imports: [
+    HighlightDirective,
+    MovieItemComponent,
+    AsyncPipe,
+    RouterLink,
+    CalculateNumberMoviesPipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
