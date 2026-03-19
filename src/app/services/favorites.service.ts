@@ -1,11 +1,22 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { Movie } from '../model/movie.model';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoritesService {
-  readonly favorites = signal<Movie[]>([]);
+  private readonly STORAGE_KEY = 'favorites';
+  readonly storageService = inject(StorageService);
+  readonly favorites = signal<Movie[]>(
+    this.storageService.getValue<Movie[]>(this.STORAGE_KEY, []),
+  );
+
+  constructor() {
+    effect(() => {
+      this.storageService.setValue<Movie[]>(this.STORAGE_KEY, this.favorites());
+    });
+  }
 
   toggleFavorite(movie: Movie): void {
     this.favorites.update((currentFavs) => {
