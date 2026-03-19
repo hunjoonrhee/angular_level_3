@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HighlightDirective } from '../highlight.directive';
+import { HighlightDirective } from '../directives/highlight.directive';
 import { Movie } from '../model/movie.model';
 import { MovieItemComponent } from '../movie-item/movie-item.component';
 import { CalculateNumberMoviesPipe } from '../pipes/calculate-number-movies.pipe';

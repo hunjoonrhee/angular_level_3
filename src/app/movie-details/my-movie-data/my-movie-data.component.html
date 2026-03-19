@@ -1,0 +1,16 @@
+<table class="horizontal">
+  <caption>My data</caption>
+  <thead>
+    <tr>
+      <th>My rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Rating">
+        <app-ratings [rating]="movieRating()" (ratingChange)="setRating($event)" />
+        {{ movieRating() }}
+      </td>
+    </tr>
+  </tbody>
+</table>

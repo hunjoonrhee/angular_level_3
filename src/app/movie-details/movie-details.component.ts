@@ -32,6 +32,7 @@ import { MovieDetails } from '../model/movie.model';
       Display:
       <button (click)="goToNumbersDetails()">Numbers</button>
       <button (click)="goToPeopleDetails()">People</button>
+      <button (click)="goToMyData()">My data</button>
     </div>
     <router-outlet></router-outlet>
   `,
@@ -47,5 +48,8 @@ export class MovieDetailsComponent {
   }
   goToPeopleDetails() {
     this.router.navigate([`details/${this.movie().id}/people`]);
+  }
+  goToMyData() {
+    this.router.navigate([`details/${this.movie().id}/my-data`]);
   }
 }

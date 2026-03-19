@@ -21,6 +21,12 @@ export const routes: Routes = [
         path: 'people',
         loadComponent: () => import('./movie-details/people/people.component'),
       },
+      {
+        path: 'my-data',
+        loadComponent: () =>
+          import('./movie-details/my-movie-data/my-movie-data.component'),
+      },
+      { path: '**', redirectTo: 'numbers' },
     ],
   },
 ];
