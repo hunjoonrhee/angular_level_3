@@ -1,0 +1,17 @@
+<table class="horizontal">
+  <caption>Numbers</caption>
+  <thead>
+    <tr>
+      <th>Box office</th>
+      <th>Budget</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Box office">{{ movie().box_office | millionDollar }}</td>
+      <td data-label="Budget">{{ movie().budget | millionDollar }}</td>
+      <td data-label="Duration">{{ movie().duration | minToDuration }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,10 +1,12 @@
-import { Component, computed, inject, input, InputSignal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { MovieDetails } from '../model/movie.model';
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { MillionDollarPipe } from '../pipes/million-dollar.pipe';
-import { MinToDurationPipe } from '../pipes/min-to-duration.pipe';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -12,12 +14,12 @@ import { MoviesService } from '../services/movies.service';
     <h1>{{ movie().title }}</h1>
     <div class="details">
       @if (movie().poster) {
-      <img
-        [ngSrc]="movie().poster || ''"
-        width="200"
-        height="100"
-        alt="Poster"
-      />
+        <img
+          [ngSrc]="movie().poster || ''"
+          width="200"
+          height="100"
+          alt="Poster"
+        />
       }
       <div>
         <p>
@@ -26,37 +28,24 @@ import { MoviesService } from '../services/movies.service';
         </p>
       </div>
     </div>
-    <table class="horizontal">
-      <caption>
-        Details
-      </caption>
-      <thead>
-        <tr>
-          <th>Box office</th>
-          <th>Budget</th>
-          <th>Duration</th>
-          <th>Producers</th>
-          <th>Cinematographers</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Box office">
-            {{ movie().box_office | millionDollar }}
-          </td>
-          <td data-label="Budget">{{ movie().budget | millionDollar }}</td>
-          <td data-label="Duration">{{ movie().duration | minToDuration }}</td>
-          <td data-label="Producers">{{ movie().producers?.join(', ') }}</td>
-          <td data-label="Cinematographers">
-            {{ movie().cinematographers?.join(', ') }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      Display:
+      <button (click)="goToNumbersDetails()">Numbers</button>
+      <button (click)="goToPeopleDetails()">People</button>
+    </div>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['movie-details.component.scss'],
-  imports: [NgOptimizedImage, MillionDollarPipe, MinToDurationPipe, AsyncPipe],
+  imports: [NgOptimizedImage, RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieDetailsComponent {
   readonly movie = input.required<MovieDetails>();
+  readonly router = inject(Router);
+  goToNumbersDetails() {
+    this.router.navigate([`details/${this.movie().id}/numbers`]);
+  }
+  goToPeopleDetails() {
+    this.router.navigate([`details/${this.movie().id}/people`]);
+  }
 }

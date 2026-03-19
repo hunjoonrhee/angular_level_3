@@ -1,4 +1,9 @@
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ToggleFavoriteMovie } from '../directives/toggle-favorite-movie.directive';
 import { Movie } from '../model/movie.model';
@@ -28,6 +33,7 @@ import { MinToDurationPipe } from '../pipes/min-to-duration.pipe';
   `,
   imports: [MillionDollarPipe, MinToDurationPipe, ToggleFavoriteMovie],
   styleUrls: ['movie-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieItemComponent {
   movie = input.required<Movie>();

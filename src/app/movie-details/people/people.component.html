@@ -1,0 +1,15 @@
+<table class="horizontal">
+  <caption>People</caption>
+  <thead>
+  <tr>
+    <th>Producers</th>
+    <th>Cinematographers</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Producers">{{ movie().producers.join(', ') }}</td>
+      <td data-label="Cinematographers">{{ movie().cinematographers.join(', ') }}</td>
+    </tr>
+  </tbody>
+</table>

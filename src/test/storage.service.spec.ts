@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
-import { StorageService } from './storage.service';
+import { StorageService } from '../app/services/storage.service';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 describe('StorageService', () => {
   let service: StorageService;
