@@ -13,8 +13,7 @@
   </div>
   @for(movie of movies$ | async; track movie.id) {
   <div class="movie-item">
-    <app-movie-item [movie]="movie" appHighlight [isFavorite]="favoritesService.isFavorite(movie)()"
-      (toggleFavorite)="favoritesService.toggleFavorite(movie)" />
+    <app-movie-item [movie]="movie" appHighlight />
 
     <div item-button>
       <button [routerLink]="'details/' + movie.id">Details</button>
